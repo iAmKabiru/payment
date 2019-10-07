@@ -21,6 +21,9 @@ class Profile(models.Model):
     department = models.CharField(max_length=255, blank=True, null=True)
     is_student = models.BooleanField()
 
+    def __str__(self):
+        return self.user.username
+
 
 @receiver(post_save, sender=CustomUser)
 def user_is_created(sender, instance, created, **kwargs):
