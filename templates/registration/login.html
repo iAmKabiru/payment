@@ -1,0 +1,12 @@
+<div class="container">
+<br><br>
+<h4>Login</h4>
+<form method="post">
+{% load crispy_forms_tags %}
+
+{% csrf_token %}
+{{ form|crispy }}
+<button type="submit" class="btn btn-success">Login</button>
+</form>
+</div>
+<br>
