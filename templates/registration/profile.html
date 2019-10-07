@@ -1,8 +1,5 @@
-{% extends 'base.html' %} {% block content%}
 <div class="container">
-<br>
-<a href="{% url 'order:order_list' %}" class="btn btn-success" role="button">orders</a>
-            <a href="{% url 'order:shipping_list' %}" class="btn btn-secondary" role="button">shippings</a>
+
             <hr>
             <br><br>
             <h4><strong>Details</strong></h4>
@@ -21,12 +18,13 @@
                     <td><strong>Email:</strong></td>
                     <td>{{user.email}}</td>
                 </tr>
+                <tr>
+                    <td><strong>Reg No:</strong></td>
+                    <td>{{user.profile.reg_no}}</td>
+                </tr>
             </table>
             </div>
-            <a href="{% url 'edit_profile' %}" class="btn btn-primary" role="button">Edit Profile</a>
-            <a href="{% url 'change_password' %}" class="btn btn-danger" role="button">Change Password</a>
             <br>
             <br>
             <br>
             </div>
-    {% endblock %}

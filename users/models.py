@@ -16,6 +16,7 @@ class CustomUser(AbstractUser):
 
 class Profile(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, primary_key =True)
+    reg_no = models.CharField(max_length=255,  blank=True, null=True)
     balance = models.IntegerField(default=0)
     department = models.CharField(max_length=255, blank=True, null=True)
     is_student = models.BooleanField()

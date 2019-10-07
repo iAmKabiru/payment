@@ -18,7 +18,7 @@ class CustomUserAdmin(UserAdmin):
 
 class ProfileAdmin(admin.ModelAdmin):
 	search_fields = ['user']
-	list_display = ['user', 'balance', 'department', 'is_student']
+	list_display = ['user', 'balance', 'department', 'is_student', 'reg_no']
 	list_filter = ['is_student']
 
 admin.site.register(CustomUser, CustomUserAdmin)
