@@ -25,3 +25,18 @@ body{
 .balance{
 	color: blue;
 }
+
+.login{
+
+-moz-box-shadow: 0 0 10px #999;
+-webkit-box-shadow: 0 0 10px #999;
+box-shadow: 0 0 10px #999;
+
+
+}
+
+.login-btn{
+	background-color: brown;
+	border-style: none;
+
+}

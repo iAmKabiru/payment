@@ -39,7 +39,7 @@ class Registration(models.Model):
 	
     
     def __str__(self):
-        return self.by
+        return str(self.by)
     
 
 # signal for balance on deposit 

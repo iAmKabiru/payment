@@ -1,17 +1,20 @@
 from django.contrib.auth import get_user_model
 User = get_user_model()
 from django.shortcuts import render, redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.views.generic.base import TemplateView
 from django.views.generic import CreateView, ListView, DetailView
 from .models import Registration, Session
 from .forms import PaymentForm
 
-class PortalView(TemplateView):
+class PortalView(LoginRequiredMixin, TemplateView):
 	template_name = 'portal.html'
 
-class BalanceView(TemplateView):
+class BalanceView(LoginRequiredMixin, TemplateView):
 	template_name = 'balance.html'
 
+@login_required
 def make_payment(request):
 	context = {}
 	context['session'] = Session.objects.last()
@@ -34,11 +37,11 @@ class MakePayment(CreateView):
 	fields  = '__all__'
 	template_name = 'make_payment.html'
 """
-class PaymentList(ListView):
+class PaymentList(LoginRequiredMixin, ListView):
 	model = Registration
 	template_name = 'payment_list.html'
 
-class PaymentDetail(DetailView):
+class PaymentDetail(LoginRequiredMixin, DetailView):
 	model = Registration
 	template_name = 'payment_detail.html'
 	#context_object_name = 'session'
