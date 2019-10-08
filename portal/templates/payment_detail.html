@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+	<br>
+<div class="col-sm-10">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+        	<br>
+        	<div class="container">
+        	<table class="table table-bordered">
+        	<thead>
+        		<td><b>S/N</b></td>
+        		<td><b>Item</b></td>
+        		<td><b>Amount</b></td>
+        	</thead>
+        	{% for item in registration.for_session.items.all %}
+        	<tbody>
+        		<td>{{forloop.counter}}</td>
+        		<td>{{item.description}}</td>
+        		<td>₦ {{item.amount}}</td>
+        		       	{% endfor %}
+<tr>
+	<td></td>
+	<td><b>Total</b></td>
+	<td><b>₦ {{registration.for_session.fee}}</b></td>
+</tr>
+        	</tbody>
+
+        </table>
+        </table>
+        <br>
+        </div>
+    </div>
+</div>
+    {% endblock %}

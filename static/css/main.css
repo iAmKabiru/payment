@@ -1,0 +1,27 @@
+body{
+	background-color:#F5F5DC;
+}
+
+.title{
+	line-height: 65px;
+	color: brown;
+}
+
+.navbar{
+	background-color:brown !important;
+}
+
+.navbar-brand{
+	text-decoration: none;
+	color:white;
+	font-size: 20px;
+
+}
+
+.panel{
+	background-color: white;
+}
+
+.balance{
+	color: blue;
+}

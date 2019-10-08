@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<div class="container">
+	<br>
+<div class="col-sm-10">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+        </div>
+        <div class="panel-body">
+        	<br>
+        	<div class="container">
+        	<table class="table table-bordered">
+        	<thead>
+        		<td><b>S/N</b></td>
+        		<td><b>Session</b></td>
+        		<td><b>Amount</b></td>
+                <td><b>Detail</b></td>
+        	</thead>
+        	{% for reg in object_list %}
+        	<tbody>
+        		<td>{{forloop.counter}}</td>
+        		<td>{{reg.for_session}}</td>
+        		<td>₦ {{reg.for_session.fee}}</td>
+                <td><a href="{% url 'payment_detail' reg.id %}">Detail</a></td>
+        		       	{% endfor %}
+        	</tbody>
+
+        </table>
+        </table>
+        <br>
+        </div>
+    </div>
+</div>
+    {% endblock %}
