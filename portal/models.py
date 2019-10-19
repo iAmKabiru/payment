@@ -14,6 +14,9 @@ class Deposit(models.Model):
     def __str__(self):
     	return str(self.amount)
 
+    class Meta:
+        verbose_name = "Wallet"
+
 
 class Session(models.Model):
  	academic_session = models.CharField(max_length = 255)
@@ -43,8 +46,8 @@ class Registration(models.Model):
     
 
 # signal for balance on deposit 
-@receiver(post_save, sender=Deposit, dispatch_uid="update_when_add")
-def update_when_add(sender, **kwargs):
+@receiver(post_save, sender=Deposit, dispatch_uid="update_balance_when_add")
+def update_balance_when_add(sender, **kwargs):
     deposit = kwargs['instance']
     if deposit.pk:
         Profile.objects.filter(pk=deposit.profile_id).update(balance=F('balance') + deposit.amount)
@@ -58,11 +61,10 @@ def update_when_add(sender, **kwargs):
     if item.pk:
         Session.objects.filter(pk=item.session_id).update(fee=F('fee') + item.amount)
 
-"""
+
 # signal for updating profile balance on registration 
-@receiver(post_save, sender=Registration, dispatch_uid="update_when_add")
-def update_when_add(sender, **kwargs):
+@receiver(post_save, sender=Registration, dispatch_uid="update_when_add_reg")
+def update_when_add_reg(sender, **kwargs):
     registration = kwargs['instance']
     if registration.pk:
-        Profile.objects.filter(pk=registration.by_id).update(balance=F('balance') - registration.for_session_amount)
-"""
+        Profile.objects.filter(pk=registration.by_id).update(balance=F('balance') - registration.for_session.fee)
